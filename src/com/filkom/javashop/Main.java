@@ -2,12 +2,14 @@ package com.filkom.javashop;
 
 import com.filkom.javashop.helper.Pager;
 import com.filkom.javashop.internal.item.Item;
+import com.filkom.javashop.internal.checkout.Checkout;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     static Pager pager = new Pager();
+    static Item item = new Item();
     static List<Item> products = new ArrayList<>();
     static final String SHOP_NAME = "javaShop";
 
@@ -31,7 +33,7 @@ public class Main {
                 current.setCount(Integer.parseInt(pager.customInput("Count:", 2)));
                 products.add(current);
             } else if (tempInput.equals("2")) {
-                //
+                item.showItems(products);
             } else if (tempInput.equals("3")) {
                 break;
             } else {
