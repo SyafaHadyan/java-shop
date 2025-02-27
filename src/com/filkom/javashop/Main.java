@@ -23,7 +23,7 @@ public class Main {
             pager.spacer(2);
             pager.message("1. Add product", 2);
             pager.message("2. Check item", 2);
-            pager.message("3. Check out", 2);
+            pager.message("3. Checkout", 2);
             pager.message("4. Quit", 2);
             pager.spacer();
             String tempInput = pager.input(2);
