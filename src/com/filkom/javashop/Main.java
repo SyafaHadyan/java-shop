@@ -30,7 +30,14 @@ public class Main {
                 pager.header("Add product");
                 pager.spacer();
                 current.setName(pager.customInput("Name:", 2));
-                current.setCount(Integer.parseInt(pager.customInput("Count:", 2)));
+                while (true) {
+                    try {
+                        current.setCount(Integer.parseInt(pager.customInput("Count:", 2)));
+                        break;
+                    } catch (NumberFormatException e) {
+                        //
+                    }
+                }
                 products.add(current);
             } else if (tempInput.equals("2")) {
                 item.showItems(products);
