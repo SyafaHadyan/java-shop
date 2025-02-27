@@ -10,6 +10,7 @@ import java.util.List;
 public class Main {
     static Pager pager = new Pager();
     static Item item = new Item();
+    static Checkout checkout = new Checkout();
     static List<Item> products = new ArrayList<>();
     static final String SHOP_NAME = "javaShop";
 
@@ -23,6 +24,7 @@ public class Main {
             pager.message("1. Add product", 2);
             pager.message("2. Check item", 2);
             pager.message("3. Check out", 2);
+            pager.message("4. Quit", 2);
             pager.spacer();
             String tempInput = pager.input(2);
             pager.footer();
@@ -42,6 +44,14 @@ public class Main {
             } else if (tempInput.equals("2")) {
                 item.showItems(products);
             } else if (tempInput.equals("3")) {
+                int[] paymentCode = checkout.checkout(products);
+                pager.message("Payment Code:", 1);
+                pager.message(
+                        String.valueOf(
+                                paymentCode[0] + " " + paymentCode[1] + " " + paymentCode[2] + " " + paymentCode[3]),
+                        1);
+            } else if (tempInput.equals("4")) {
+                input.close();
                 break;
             } else {
                 pager.spacer();
@@ -49,6 +59,5 @@ public class Main {
             }
             pager.footer();
         }
-        input.close();
     }
 }
