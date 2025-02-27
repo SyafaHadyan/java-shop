@@ -1,5 +1,6 @@
+package com.filkom.javashop;
 import java.util.Scanner;
-import helper.Pager;
+import com.filkom.javashop.helper.Pager;
 
 public class Main {
 

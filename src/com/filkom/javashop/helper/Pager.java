@@ -1,4 +1,4 @@
-package helper;
+package com.filkom.javashop.helper;
 
 public class Pager {
     private int pageWidth = 25;
