@@ -28,8 +28,8 @@ public class Item {
     public void showItems(List<Item> products) {
         int total = 0;
         pager.header("Product List");
+        pager.spacer();
         for (Item item : products) {
-            pager.spacer();
             pager.message("Item", 1);
             pager.message(item.getName(), 1);
             pager.spacer();
