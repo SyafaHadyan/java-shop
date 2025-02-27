@@ -78,6 +78,20 @@ public class Pager {
         }
     }
 
+    public void header(String message) {
+        horizontalSeparator();
+        spacer();
+        messageCenter(message);
+        spacer();
+        horizontalSeparator();
+    }
+
+    public void footer() {
+        spacer();
+        horizontalSeparator();
+        emptySpace();
+    }
+
     public void messageCenter(String message) {
         int size = this.pageWidth - message.length();
         beginLine();
@@ -108,6 +122,15 @@ public class Pager {
     }
 
     public String input(int spaceBefore) {
+        beginLine();
+        for (int i = 0; i < spaceBefore; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(this.inputStyle + " ");
+        return input.nextLine();
+    }
+
+    public String customInput(String inputStyle, int spaceBefore) {
         beginLine();
         for (int i = 0; i < spaceBefore; i++) {
             System.out.print(" ");
