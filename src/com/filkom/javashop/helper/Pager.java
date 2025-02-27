@@ -1,22 +1,33 @@
 package com.filkom.javashop.helper;
 
+import java.util.Scanner;
+
 public class Pager {
     private int pageWidth = 25;
-    private char horizontalBar = '=';
+    private char horizontalBar = '-';
     private char verticalBar = '|';
     private char edge = '+';
+    private String inputStyle = "$";
+    private Scanner input = new Scanner(System.in);
 
     private void printSpace() {
-        System.out.print(verticalBar);
+        beginLine();
         for (int i = 0; i < pageWidth; i++) {
             System.out.print(" ");
         }
-        System.out.print(verticalBar);
-        newLine();
+        endLine();
     }
 
-    private void newLine() {
+    private void printEmptySpace() {
         System.out.println();
+    }
+
+    private void beginLine() {
+        System.out.print(this.verticalBar);
+    }
+
+    private void endLine() {
+        System.out.println(this.verticalBar);
     }
 
     public void setPageWidth(int pageWidth) {
@@ -35,13 +46,16 @@ public class Pager {
         this.edge = edge;
     }
 
+    public void setInputStyle(String inputStyle) {
+        this.inputStyle = inputStyle;
+    }
+
     public void horizontalSeparator() {
         System.out.print(this.edge);
         for (int i = 0; i < this.pageWidth; i++) {
             System.out.print(horizontalBar);
         }
-        System.out.print(this.edge);
-        newLine();
+        System.out.println(this.edge);
     }
 
     public void spacer() {
@@ -54,9 +68,19 @@ public class Pager {
         }
     }
 
+    public void emptySpace() {
+        printEmptySpace();
+    }
+
+    public void emptySpace(int space) {
+        for (int i = 0; i < space; i++) {
+            printEmptySpace();
+        }
+    }
+
     public void messageCenter(String message) {
         int size = this.pageWidth - message.length();
-        System.out.print(this.verticalBar);
+        beginLine();
         for (int i = 0; i < size / 2; i++) {
             System.out.print(" ");
         }
@@ -67,7 +91,28 @@ public class Pager {
         if (message.length() % 2 == 0) {
             System.out.print(" ");
         }
-        System.out.print(this.verticalBar);
-        newLine();
+        endLine();
+    }
+
+    public void message(String message, int spaceBefore) {
+        int spaceAfter = pageWidth - spaceBefore - message.length();
+        beginLine();
+        for (int i = 0; i < spaceBefore; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(message);
+        for (int i = 0; i < spaceAfter; i++) {
+            System.out.print(" ");
+        }
+        endLine();
+    }
+
+    public String input(int spaceBefore) {
+        beginLine();
+        for (int i = 0; i < spaceBefore; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(inputStyle + " ");
+        return input.nextLine();
     }
 }
