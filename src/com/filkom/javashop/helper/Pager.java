@@ -1,10 +1,14 @@
 package com.filkom.javashop.helper;
 
+import java.util.Scanner;
+
 public class Pager {
     private int pageWidth = 25;
-    private char horizontalBar = '=';
+    private char horizontalBar = '-';
     private char verticalBar = '|';
     private char edge = '+';
+    private String inputStyle = "$";
+    private Scanner input = new Scanner(System.in);
 
     private void printSpace() {
         beginLine();
@@ -12,6 +16,10 @@ public class Pager {
             System.out.print(" ");
         }
         endLine();
+    }
+
+    private void printEmptySpace() {
+        System.out.println();
     }
 
     private void beginLine() {
@@ -38,6 +46,10 @@ public class Pager {
         this.edge = edge;
     }
 
+    public void setInputStyle(String inputStyle) {
+        this.inputStyle = inputStyle;
+    }
+
     public void horizontalSeparator() {
         System.out.print(this.edge);
         for (int i = 0; i < this.pageWidth; i++) {
@@ -53,6 +65,16 @@ public class Pager {
     public void spacer(int space) {
         for (int i = 0; i < space; i++) {
             printSpace();
+        }
+    }
+
+    public void emptySpace() {
+        printEmptySpace();
+    }
+
+    public void emptySpace(int space) {
+        for (int i = 0; i < space; i++) {
+            printEmptySpace();
         }
     }
 
@@ -73,14 +95,24 @@ public class Pager {
     }
 
     public void message(String message, int spaceBefore) {
+        int spaceAfter = pageWidth - spaceBefore - message.length();
+        beginLine();
         for (int i = 0; i < spaceBefore; i++) {
             System.out.print(" ");
         }
         System.out.print(message);
-        for (int i = 0; i < pageWidth - 2 - spaceBefore; i++) {
+        for (int i = 0; i < spaceAfter; i++) {
             System.out.print(" ");
         }
-        System.out.print(this.horizontalBar);
         endLine();
+    }
+
+    public String input(int spaceBefore) {
+        beginLine();
+        for (int i = 0; i < spaceBefore; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(inputStyle + " ");
+        return input.nextLine();
     }
 }

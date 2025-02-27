@@ -1,19 +1,22 @@
 package com.filkom.javashop.internal.item;
 
 public class Item {
-    private String name;
-    private String description;
-    private int stock;
+    public String name;
+    public int count;
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCount(int stock) {
+        this.count = stock;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public String getName() {
+        return this.name;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 }
