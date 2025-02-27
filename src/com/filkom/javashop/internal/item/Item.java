@@ -1,6 +1,11 @@
 package com.filkom.javashop.internal.item;
 
+import com.filkom.javashop.helper.Pager;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Item {
+    Pager pager = new Pager();
     private String name;
     private int count;
 
@@ -18,5 +23,21 @@ public class Item {
 
     public int getCount() {
         return this.count;
+    }
+
+    public void showItems(List<Item> products) {
+        int total = 0;
+        pager.header("Product List");
+        for (Item item : products) {
+            pager.spacer();
+            pager.message("Item", 1);
+            pager.message(item.getName(), 1);
+            pager.spacer();
+            pager.message("Count: " + String.valueOf(item.getCount()), 1);
+            pager.spacer();
+            total += item.getCount();
+        }
+        pager.message("Item count: " + products.size(), 1);
+        pager.message("Item total: " + total, 1);
     }
 }
