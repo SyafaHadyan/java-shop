@@ -7,16 +7,19 @@ public class Pager {
     private char edge = '+';
 
     private void printSpace() {
-        System.out.print(verticalBar);
+        beginLine();
         for (int i = 0; i < pageWidth; i++) {
             System.out.print(" ");
         }
-        System.out.print(verticalBar);
-        newLine();
+        endLine();
     }
 
-    private void newLine() {
-        System.out.println();
+    private void beginLine() {
+        System.out.print(this.verticalBar);
+    }
+
+    private void endLine() {
+        System.out.println(this.verticalBar);
     }
 
     public void setPageWidth(int pageWidth) {
@@ -40,8 +43,7 @@ public class Pager {
         for (int i = 0; i < this.pageWidth; i++) {
             System.out.print(horizontalBar);
         }
-        System.out.print(this.edge);
-        newLine();
+        System.out.println(this.edge);
     }
 
     public void spacer() {
@@ -56,7 +58,7 @@ public class Pager {
 
     public void messageCenter(String message) {
         int size = this.pageWidth - message.length();
-        System.out.print(this.verticalBar);
+        beginLine();
         for (int i = 0; i < size / 2; i++) {
             System.out.print(" ");
         }
@@ -67,7 +69,18 @@ public class Pager {
         if (message.length() % 2 == 0) {
             System.out.print(" ");
         }
-        System.out.print(this.verticalBar);
-        newLine();
+        endLine();
+    }
+
+    public void message(String message, int spaceBefore) {
+        for (int i = 0; i < spaceBefore; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(message);
+        for (int i = 0; i < pageWidth - 2 - spaceBefore; i++) {
+            System.out.print(" ");
+        }
+        System.out.print(this.horizontalBar);
+        endLine();
     }
 }
