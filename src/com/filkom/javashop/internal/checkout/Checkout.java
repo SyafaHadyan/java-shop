@@ -3,7 +3,6 @@ package com.filkom.javashop.internal.checkout;
 
 import com.filkom.javashop.helper.Pager;
 import com.filkom.javashop.internal.item.Item;
-import com.filkom.javashop.internal.checkout.Checkout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
