@@ -16,7 +16,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int counter = 0;
         while (true) {
             DaftarBelanja current = new DaftarBelanja();
             pager.header("Welcome to " + SHOP_NAME);
