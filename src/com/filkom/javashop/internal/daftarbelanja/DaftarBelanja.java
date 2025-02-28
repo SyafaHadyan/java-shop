@@ -1,10 +1,10 @@
-package com.filkom.javashop.internal.item;
+package com.filkom.javashop.internal.daftarbelanja;
 
 import com.filkom.javashop.helper.Pager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Item {
+public class DaftarBelanja {
     Pager pager = new Pager();
     private String name;
     private int count;
@@ -25,11 +25,11 @@ public class Item {
         return this.count;
     }
 
-    public void showItems(List<Item> products) {
+    public void showItems(List<DaftarBelanja> products) {
         int total = 0;
         pager.header("Product List");
         pager.spacer();
-        for (Item item : products) {
+        for (DaftarBelanja item : products) {
             pager.message("Item", 1);
             pager.message(item.getName(), 1);
             pager.spacer();

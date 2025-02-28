@@ -2,7 +2,7 @@
 package com.filkom.javashop.internal.checkout;
 
 import com.filkom.javashop.helper.Pager;
-import com.filkom.javashop.internal.item.Item;
+import com.filkom.javashop.internal.daftarbelanja.DaftarBelanja;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
@@ -22,12 +22,12 @@ public class Checkout {
         return paymentCode;
     }
 
-    public int[] checkout(List<Item> products) {
+    public int[] checkout(List<DaftarBelanja> products) {
         HashMap<String, Integer> finalProduct = new HashMap<>();
         int total = 0;
         pager.header("Checkout");
         pager.spacer();
-        for (Item item : products) {
+        for (DaftarBelanja item : products) {
             finalProduct.merge(item.getName().toLowerCase(), item.getCount(), Integer::sum);
         }
         for (String i : finalProduct.keySet()) {
