@@ -50,6 +50,7 @@ public class Main {
                         String.valueOf(
                                 paymentCode[0] + " " + paymentCode[1] + " " + paymentCode[2] + " " + paymentCode[3]),
                         1);
+                products.clear();
             } else if (tempInput.equals("4")) {
                 input.close();
                 break;
